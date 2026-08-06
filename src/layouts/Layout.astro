@@ -1,0 +1,57 @@
+---
+import Header from '../components/Header.astro';
+import '../styles/global.css';
+
+interface Props {
+  titulo?: string;
+}
+const { titulo = 'De Pelos y Patas por Emilia' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <title>{titulo}</title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span class="eyebrow">pelosypatas.pages.dev</span>
+        <span class="copy">© {new Date().getFullYear()}</span>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--manila-line);
+    margin-top: 40px;
+  }
+  .footer-inner {
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer .eyebrow {
+    color: var(--muted);
+  }
+  .copy {
+    font-size: 11px;
+    color: var(--muted);
+  }
+</style>

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "titulo": {
+      "type": "string"
+    },
+    "resumen": {
+      "type": "string"
+    },
+    "categoria": {
+      "type": "string",
+      "enum": [
+        "Salud y Cuidado",
+        "Adopción",
+        "Curiosidades",
+        "Entrevistas",
+        "Emilia Opina"
+      ]
+    },
+    "fecha": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "destacada": {
+      "default": false,
+      "type": "boolean"
+    },
+    "imagen": {
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "titulo",
+    "resumen",
+    "categoria",
+    "fecha"
+  ]
+}

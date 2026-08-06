@@ -1,0 +1,93 @@
+---
+const categorias = [
+  { nombre: 'Salud y Cuidado', slug: 'salud-y-cuidado' },
+  { nombre: 'Adopción', slug: 'adopcion' },
+  { nombre: 'Curiosidades', slug: 'curiosidades' },
+  { nombre: 'Entrevistas', slug: 'entrevistas' },
+  { nombre: 'Emilia Opina', slug: 'emilia-opina' },
+];
+---
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <span class="logo-dot" aria-hidden="true"></span>
+      <span class="logo-text">De Pelos y Patas</span>
+      <span class="logo-sub">por Emilia</span>
+    </a>
+    <nav class="nav">
+      {
+        categorias.map((c) => (
+          <a href={`/categoria/${c.slug}`} class:list={[{ destacada: c.nombre === 'Emilia Opina' }]}>
+            {c.nombre}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    border-bottom: 1px solid var(--manila-line);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 24px;
+    flex-wrap: wrap;
+  }
+  .logo {
+    background: var(--mustard);
+    border-radius: 6px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .logo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1.5px solid var(--mustard-ink);
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--mustard-dark);
+    white-space: nowrap;
+  }
+  .logo-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--mustard-ink);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    border-left: 1px solid #c68a2e;
+    padding-left: 8px;
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .nav a {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .nav a:hover {
+    color: var(--ink);
+  }
+  .nav a.destacada {
+    color: var(--mustard-ink);
+    font-weight: 500;
+  }
+</style>

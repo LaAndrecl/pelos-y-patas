@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import NoticiaCard from '../../components/NoticiaCard.astro';
+
+const categorias = [
+  { slug: 'salud-y-cuidado', nombre: 'Salud y Cuidado' },
+  { slug: 'adopcion', nombre: 'Adopción' },
+  { slug: 'curiosidades', nombre: 'Curiosidades' },
+  { slug: 'entrevistas', nombre: 'Entrevistas' },
+  { slug: 'emilia-opina', nombre: 'Emilia Opina' },
+];
+
+export async function getStaticPaths() {
+  const lista = [
+    { slug: 'salud-y-cuidado', nombre: 'Salud y Cuidado' },
+    { slug: 'adopcion', nombre: 'Adopción' },
+    { slug: 'curiosidades', nombre: 'Curiosidades' },
+    { slug: 'entrevistas', nombre: 'Entrevistas' },
+    { slug: 'emilia-opina', nombre: 'Emilia Opina' },
+  ];
+  return lista.map((c) => ({ params: { slug: c.slug } }));
+}
+
+const { slug } = Astro.params;
+const categoria = categorias.find((c) => c.slug === slug)?.nombre;
+const todas = await getCollection('noticias');
+const filtradas = todas
+  .filter((n) => n.data.categoria === categoria)
+  .sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf());
+---
+
+<Layout titulo={`${categoria} — De Pelos y Patas`}>
+  <div class="container encabezado">
+    <span class="eyebrow">Categoría</span>
+    <h1>{categoria}</h1>
+  </div>
+  <section class="container grid">
+    {filtradas.map((n) => <NoticiaCard slug={n.id} titulo={n.data.titulo} categoria={n.data.categoria} fecha={n.data.fecha} />)}
+  </section>
+  {filtradas.length === 0 && <p class="container vacio">Todavía no hay noticias en esta categoría.</p>}
+</Layout>
+
+<style>
+  .encabezado {
+    padding: 32px 24px 8px;
+  }
+  .encabezado h1 {
+    font-size: 26px;
+    margin-top: 8px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding: 24px 24px 32px;
+  }
+  .vacio {
+    color: var(--muted);
+    padding-bottom: 32px;
+  }
+  @media (max-width: 640px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

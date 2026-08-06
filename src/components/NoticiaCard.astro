@@ -1,0 +1,51 @@
+---
+interface Props {
+  slug: string;
+  titulo: string;
+  categoria: string;
+  fecha: Date;
+}
+const { slug, titulo, categoria, fecha } = Astro.props;
+const fechaTexto = fecha.toLocaleDateString('es-CL', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
+---
+
+<a href={`/noticias/${slug}`} class="card">
+  <div class="thumb">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c4bfae" stroke-width="1.6">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <circle cx="8.5" cy="10" r="1.5" />
+      <path d="M21 15l-5-5-11 9" />
+    </svg>
+  </div>
+  <span class="tag" data-categoria={categoria}>{categoria}</span>
+  <h3>{titulo}</h3>
+  <span class="fecha">{fechaTexto}</span>
+</a>
+
+<style>
+  .card {
+    display: block;
+  }
+  .thumb {
+    background: #f0eee6;
+    border-radius: 8px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-size: 16px;
+    line-height: 1.3;
+    margin: 8px 0 6px;
+  }
+  .fecha {
+    font-size: 11px;
+    color: var(--muted);
+  }
+</style>

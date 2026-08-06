@@ -1,0 +1,94 @@
+:root {
+  --paper: #ffffff;
+  --manila: #f3eee1;
+  --manila-line: #d8d2c0;
+  --ink: #23342b;
+  --ink-soft: #4a5a50;
+  --muted: #8a8575;
+  --mustard: #e2a33b;
+  --mustard-dark: #4a340d;
+  --mustard-ink: #8c6212;
+  --moss: #2f6b5e;
+  --moss-bg: #eaf3ef;
+
+  --tag-adopcion-bg: #faeeda;
+  --tag-adopcion-ink: #854f0b;
+  --tag-salud-bg: #e1f5ee;
+  --tag-salud-ink: #0f6e56;
+  --tag-curiosidades-bg: #fbeaf0;
+  --tag-curiosidades-ink: #993556;
+  --tag-entrevistas-bg: #e9e4f5;
+  --tag-entrevistas-ink: #3c3489;
+  --tag-opina-bg: #faeeda;
+  --tag-opina-ink: #8c6212;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.tag[data-categoria='Adopción'] {
+  background: var(--tag-adopcion-bg);
+  color: var(--tag-adopcion-ink);
+}
+.tag[data-categoria='Salud y Cuidado'] {
+  background: var(--tag-salud-bg);
+  color: var(--tag-salud-ink);
+}
+.tag[data-categoria='Curiosidades'] {
+  background: var(--tag-curiosidades-bg);
+  color: var(--tag-curiosidades-ink);
+}
+.tag[data-categoria='Entrevistas'] {
+  background: var(--tag-entrevistas-bg);
+  color: var(--tag-entrevistas-ink);
+}
+.tag[data-categoria='Emilia Opina'] {
+  background: var(--tag-opina-bg);
+  color: var(--tag-opina-ink);
+}
