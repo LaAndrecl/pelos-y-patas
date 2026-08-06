@@ -36,7 +36,7 @@ const filtradas = todas
     <h1>{categoria}</h1>
   </div>
   <section class="container grid">
-    {filtradas.map((n) => <NoticiaCard slug={n.id} titulo={n.data.titulo} categoria={n.data.categoria} fecha={n.data.fecha} />)}
+    {filtradas.map((n) => <NoticiaCard slug={n.id} titulo={n.data.titulo} categoria={n.data.categoria} fecha={n.data.fecha} imagen={n.data.imagen} />)}
   </section>
   {filtradas.length === 0 && <p class="container vacio">Todavía no hay noticias en esta categoría.</p>}
 </Layout>
